@@ -53,7 +53,7 @@ Which lookup would you have done differently, and how? If none, which one surpri
 
 Describe Wikidata briefly. Why may it be important to this task?
 
-> Wikidata is a database for facts that contains an item, a property and a value. 
+> Wikidata is a database for facts that contains an item, a property and a value about the fact. This is important because the model can search for the item and retrieve its property and value respectively. 
 
 # Part 1: How the agent works
 

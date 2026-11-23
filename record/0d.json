@@ -29,7 +29,7 @@
     },
     {
       "question": "Describe Wikidata briefly. Why may it be important to this task?",
-      "answer": "Wikidata is a database for facts that contains an item, a property and a value.",
+      "answer": "Wikidata is a database for facts that contains an item, a property and a value about the fact. This is important because the model can search for the item and retrieve its property and value respectively.",
       "written_by": "the student"
     }
   ],
@@ -72,10 +72,29 @@
     {
       "kind": "asked",
       "text": "done",
+      "time": "2026-11-23T12:17:59-06:00"
+    },
+    {
+      "kind": "ran",
+      "text": "Show the 0d section of WRITEUP.md",
+      "status": "ok",
+      "file": null,
       "reached": [
         "Your answers are in WRITEUP.md"
       ],
-      "time": "2026-11-23T12:17:59-06:00"
+      "time": "2026-11-23T12:18:00-06:00"
+    },
+    {
+      "kind": "asked",
+      "text": "done",
+      "time": "2026-11-23T12:18:53-06:00"
+    },
+    {
+      "kind": "ran",
+      "text": "Show the Wikidata answer in WRITEUP.md",
+      "status": "ok",
+      "file": null,
+      "time": "2026-11-23T12:18:55-06:00"
     }
   ],
   "told_the_page": [
@@ -93,7 +112,12 @@
       "time": "2026-11-23T12:11:22-06:00",
       "kind": "status",
       "text": "Waiting for your 0d answers in WRITEUP.md"
+    },
+    {
+      "time": "2026-11-23T12:18:56-06:00",
+      "kind": "status",
+      "text": "Step 0d answers are in WRITEUP.md"
     }
   ],
-  "turns": 5
+  "turns": 6
 }
