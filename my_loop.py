@@ -43,4 +43,46 @@ def run_agent(claim, client=None, max_steps=MAX_STEPS, lookup=run_tool):
     # also pay attention to whether the loop has reached its limit: a claim that runs out of
     # lookups cannot be decided.
     # ---- your loop goes below this line (step 1a) ----
-    raise NotImplementedError("The loop is not written yet: see step 1a.")
+
+    # The loop first sends the claim to the model and asks it to retrieve the item (what the
+    # question is about), the property (what the question is asking for), and the value (what the
+    # question claims).
+    reply = talk.ask()
+
+    # (The repeat: "The loop keeps doing this until ...", below. Python puts the repeat here, at
+    # the top of what it repeats.)
+    while True:
+
+        # The loop then reads the model's reply.
+        # (no new Python: the reply is already in hand)
+
+        # If the reply asks for lookups, like searching the item on Wikipedia and looking for the
+        # property, the loop makes all of the lookups that reply asked for, one or several, and
+        # counts each one.
+        if reply.lookups:
+            made = []
+            for call in reply.lookups:
+                made.append((call, talk.run(call)))
+                steps += 1
+
+            # It then sends all the results back to the model at once and asks again.
+            for call, result in made:
+                talk.give(call, result)
+            talk.send_results()
+            reply = talk.ask()
+
+        # If the property doesn't appear in the page, the model's next reply will ask for another
+        # lookup, either in Wikidata or on another Wikipedia page that's most relevant to the item
+        # and property, and the loop makes that lookup and sends the results back the same way.
+        # (no new Python: this is the next time round the repeat)
+
+        # The loop keeps doing this until the model's reply is an answer instead of a lookup
+        # request, and then it stops with that answer: the claim is supported if the value matches
+        # the claim, and rejected if it doesn't.
+        if reply.answer is not None:
+            return talk.accept(reply.answer, steps)
+
+        # If the count of lookups reaches the limit (for example 5) before the model gives an
+        # answer, the loop stops right there and doesn't make any more lookups.
+        if steps >= max_steps:
+            return talk.stop(RAN_OUT, steps)

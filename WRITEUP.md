@@ -65,16 +65,17 @@ The Background and an example outline are under 1a on the homework page, and in 
 
 Write your outline of the loop in the code block: what it remembers, what it repeats, and every way it stops.
 
-```
-```
+``` 
+The loop first sends the claim to the model and asks it to retrieve the item (what the question is about), the property (what the question is asking for), and the value (what the question claims). The loop then reads the model's reply. If the reply asks for lookups, like searching the item on Wikipedia and looking for the property, the loop makes all of the lookups that reply asked for, one or several, and counts each one. It then sends all the results back to the model at once and asks again. If the property doesn't appear in the page, the model's next reply will ask for another lookup, either in Wikidata or on another Wikipedia page that's most relevant to the item and property, and the loop makes that lookup and sends the results back the same way. The loop keeps doing this until the model's reply is an answer instead of a lookup request, and then it stops with that answer: the claim is supported if the value matches the claim, and rejected if it doesn't. If the count of lookups reaches the limit (for example 5) before the model gives an answer, the loop stops right there and doesn't make any more lookups.
+```   
 
 List each thing your loop remembers from one turn to the next, and say what would go wrong without it.
 
->
+> The conversation so far (claim, model replies, lookup results). Without it, the model forgets what it's checking and repeats itself. The model's latest reply. Without it, the loop can't tell if it's a lookup request or an answer, so it never stops or stops too early. The count of lookups. Without it, the loop can't tell when the limit is reached and makes one search too many. The limit. Without it, the count has nothing to be checked against, so the loop could search forever. 
 
 Now open `reference_loop.py` and compare it with your loop. Describe one difference in implementation and the resulting effects on agent behavior.
 
->
+>  The reference loop check the limit after reading the reply so an answer can be accepted even if it reach the limit. 
 
 ## 1b. Be the agent
 
@@ -84,11 +85,13 @@ List your lookups, in order. Ask Claude to paste every column but the last from 
 
 | # | Tool | What you asked for | Why you chose it |
 |---|---|---|---|
-| 1 | | | |
+| 1 | search | query: "Vic & Anthony's Steakhouse" | To check the subject of the claim |
+| 2 | read | title: "Vic & Anthony's Steakhouse" | To gain more information about the subject |
+| 3 | search | query: "california club" | To test the second part of the claim |
 
 What is your verdict on the claim, and which sentence or sentences from what you read is it based on?
 
->
+> refuted, there's no information confirming the steakhouse is combined with caliornia club. evidence: Vic & Anthony's is an American steakhouse restaurant chain with locations in Downtown Houston, and inside the Golden Nugget Casinos in Las Vegas, Atlantic City and Lake Charles. Vic & Anthony's is owned and operated by Landry's, Inc.
 
 ## 1c. Watch the agent work
 
@@ -96,19 +99,19 @@ List the three traces you read closely. At least one should be a claim the agent
 
 | # | Claim (first few words) | Articles | Did it match the dataset's label? | Did it get there for a good reason? Why or why not |
 |---|---|---|---|---|
-| 1 | | | | |
-| 2 | | | | |
-| 3 | | | | |
+| 1 | The actor who starred as Constable Benton Fraser  | 2 | does not match | Yes, the agent check the wikipage of main subject in the claim and it includes his personal life section |
+| 2 | The film, that Buddy Baker | 4 | match | Yes, the agent check the wikipage for the artist and check their movie |
+| 3 | Vic & Anthony's Steakhouse | 3 | match | Yes, the agent check each subject in the claim and search for their connections |
 
 Which trace did you find most interesting, and what did the agent do well or badly in it?
 
->
+> In the Vic & Anthony's Steakhouse claim, the agent really dig into the items and makes connection between them. The agent did well on searching different items and find the common information they share to make the verdict. 
 
 ## 1d. Write the agent's instructions
 
 What changed in the agent's traces after you wrote your instructions? Give one claim as an example.
 
->
+> In Sledge is a journalist claim, the agent made more search on each piece of items in the claim. 
 
 ## 1e. Start the full run, and predict
 
@@ -116,13 +119,13 @@ Predict the share of claims each version will get right (its verdict matches the
 
 | Version | 2 articles | 3 articles | 4 articles | Why you think so |
 |---|---|---|---|---|
-| No tools | | | | |
-| One search | | | | |
-| Agent | | | | |
+| No tools | 0.3 | 0.3 | 0.3 | I think with no tools it would be hard for the agent to check the claim with base knowledge|
+| One search | 0.6 | 0.5 | 0.4 | I think the accuracy rate should increase with one search but it's still hard for the agent to deal with claim with many subjects|
+| Agent | 0.8 | 0.8 | 0.85 | I think the agent with full toolkit will perform the best, and from the previous examples it seems like the agent deal with 4 articles better than the 2 and 3 ones. |
 
 How many lookups will the agent make per claim, on average? Why?
 
->
+> 4.5, because there's simple and complex claim, some of the simple ones will only need a few search but in generall from the traces I read it looks like 4.5 is an averge number for the lookups.  
 
 # Part 2: The agent against the baselines
 

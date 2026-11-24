@@ -5,45 +5,238 @@
   "conversations": [
     "091853d2-89f0-4c92-a364-c6a13aa2ec15"
   ],
-  "complete": false,
+  "complete": true,
   "checkpoints": [
     {
       "text": "Your outline is in WRITEUP.md",
-      "reached": false
+      "reached": true
     },
     {
       "text": "Your loop in my_loop.py passes every rule of the check",
-      "reached": false
+      "reached": true
     },
     {
       "text": "Your answers are in WRITEUP.md",
-      "reached": false
+      "reached": true
     }
   ],
   "answers": [
     {
       "question": "Write your outline of the loop in the code block: what it remembers, what it repeats, and every way it stops.",
-      "answer": "",
-      "written_by": null
+      "answer": "The loop first sends the claim to the model and asks it to retrieve the item (what the question is about), the property (what the question is asking for), and the value (what the question claims). The loop then reads the model's reply. If the reply asks for lookups, like searching the item on Wikipedia and looking for the property, the loop makes all of the lookups that reply asked for, one or several, and counts each one. It then sends all the results back to the model at once and asks again. If the property doesn't appear in the page, the model's next reply will ask for another lookup, either in Wikidata or on another Wikipedia page that's most relevant to the item and property, and the loop makes that lookup and sends the results back the same way. The loop keeps doing this until the model's reply is an answer instead of a lookup request, and then it stops with that answer: the claim is supported if the value matches the claim, and rejected if it doesn't. If the count of lookups reaches the limit (for example 5) before the model gives an answer, the loop stops right there and doesn't make any more lookups.",
+      "written_by": "the student"
     },
     {
       "question": "List each thing your loop remembers from one turn to the next, and say what would go wrong without it.",
-      "answer": "",
-      "written_by": null
+      "answer": "The conversation so far (claim, model replies, lookup results). Without it, the model forgets what it's checking and repeats itself. The model's latest reply. Without it, the loop can't tell if it's a lookup request or an answer, so it never stops or stops too early. The count of lookups. Without it, the loop can't tell when the limit is reached and makes one search too many. The limit. Without it, the count has nothing to be checked against, so the loop could search forever.",
+      "written_by": "the student"
     },
     {
       "question": "Now open `reference_loop.py` and compare it with your loop. Describe one difference in implementation and the resulting effects on agent behavior.",
-      "answer": "",
-      "written_by": null
+      "answer": "The reference loop check the limit after reading the reply so an answer can be accepted even if it reach the limit.",
+      "written_by": "the student"
     }
   ],
-  "record": [],
+  "record": [
+    {
+      "kind": "asked",
+      "text": "done, translate my outline",
+      "time": "2026-11-23T12:24:54-06:00"
+    },
+    {
+      "kind": "ran",
+      "text": "Show the 1a section of WRITEUP.md",
+      "status": "ok",
+      "file": null,
+      "time": "2026-11-23T12:24:55-06:00"
+    },
+    {
+      "kind": "ran",
+      "text": "Edited my_loop.py",
+      "status": "ok",
+      "file": null,
+      "reached": [
+        "Your outline is in WRITEUP.md"
+      ],
+      "time": "2026-11-23T12:25:44-06:00"
+    },
+    {
+      "kind": "asked",
+      "text": "check now",
+      "time": "2026-11-23T12:27:12-06:00"
+    },
+    {
+      "kind": "ran",
+      "text": "Ran check_loop.py",
+      "status": "error",
+      "file": null,
+      "time": "2026-11-23T12:27:13-06:00"
+    },
+    {
+      "kind": "asked",
+      "text": "what is not working in my loop",
+      "time": "2026-11-23T12:29:14-06:00"
+    },
+    {
+      "kind": "ran",
+      "text": "Find the outline's second sentence in WRITEUP.md",
+      "status": "ok",
+      "file": null,
+      "time": "2026-11-23T12:29:16-06:00"
+    },
+    {
+      "kind": "asked",
+      "text": "I see, then can I say the model send back the value it found and compare it with the claim, if not matched, keep searching.",
+      "time": "2026-11-23T12:29:59-06:00"
+    },
+    {
+      "kind": "asked",
+      "text": "done, translate my outline again",
+      "time": "2026-11-23T12:30:43-06:00"
+    },
+    {
+      "kind": "ran",
+      "text": "Looked at WRITEUP.md",
+      "status": "ok",
+      "file": null,
+      "time": "2026-11-23T12:30:44-06:00"
+    },
+    {
+      "kind": "ran",
+      "text": "Looked at a git diff",
+      "status": "ok",
+      "file": null,
+      "time": "2026-11-23T12:30:45-06:00"
+    },
+    {
+      "kind": "asked",
+      "text": "saved now, translate it again",
+      "time": "2026-11-23T12:30:58-06:00"
+    },
+    {
+      "kind": "ran",
+      "text": "Looked at WRITEUP.md",
+      "status": "ok",
+      "file": null,
+      "time": "2026-11-23T12:30:59-06:00"
+    },
+    {
+      "kind": "ran",
+      "text": "Edited my_loop.py",
+      "status": "ok",
+      "file": null,
+      "time": "2026-11-23T12:31:06-06:00"
+    },
+    {
+      "kind": "ran",
+      "text": "Edited my_loop.py",
+      "status": "ok",
+      "file": null,
+      "time": "2026-11-23T12:31:08-06:00"
+    },
+    {
+      "kind": "asked",
+      "text": "check now",
+      "time": "2026-11-23T12:31:19-06:00"
+    },
+    {
+      "kind": "ran",
+      "text": "Ran check_loop.py",
+      "status": "error",
+      "file": null,
+      "time": "2026-11-23T12:31:20-06:00"
+    },
+    {
+      "kind": "asked",
+      "text": "done, translate my outline again",
+      "time": "2026-11-23T15:14:24-06:00"
+    },
+    {
+      "kind": "ran",
+      "text": "Looked at WRITEUP.md",
+      "status": "ok",
+      "file": null,
+      "time": "2026-11-23T15:14:26-06:00"
+    },
+    {
+      "kind": "ran",
+      "text": "Edited my_loop.py",
+      "status": "ok",
+      "file": null,
+      "time": "2026-11-23T15:14:59-06:00"
+    },
+    {
+      "kind": "asked",
+      "text": "check now",
+      "time": "2026-11-23T15:15:33-06:00"
+    },
+    {
+      "kind": "ran",
+      "text": "Ran check_loop.py",
+      "status": "ok",
+      "file": null,
+      "reached": [
+        "Your loop in my_loop.py passes every rule of the check"
+      ],
+      "time": "2026-11-23T15:15:34-06:00"
+    },
+    {
+      "kind": "asked",
+      "text": "done",
+      "reached": [
+        "Your answers are in WRITEUP.md"
+      ],
+      "time": "2026-11-23T15:26:00-06:00"
+    },
+    {
+      "kind": "ran",
+      "text": "Looked at runs/part1/",
+      "status": "ok",
+      "file": null,
+      "time": "2026-11-23T15:26:02-06:00"
+    }
+  ],
   "told_the_page": [
     {
       "time": "2026-11-23T12:19:18-06:00",
       "kind": "status",
       "text": "Waiting for your loop outline in WRITEUP.md"
+    },
+    {
+      "time": "2026-11-23T12:25:40-06:00",
+      "kind": "status",
+      "text": "Translating your outline into my_loop.py"
+    },
+    {
+      "time": "2026-11-23T12:27:13-06:00",
+      "kind": "status",
+      "text": "Running the check on your loop"
+    },
+    {
+      "time": "2026-11-23T12:27:16-06:00",
+      "kind": "status",
+      "text": "Check ran: working on rule 2"
+    },
+    {
+      "time": "2026-11-23T12:31:24-06:00",
+      "kind": "status",
+      "text": "Check ran: still on rule 2"
+    },
+    {
+      "time": "2026-11-23T15:14:48-06:00",
+      "kind": "status",
+      "text": "Translating your new outline into my_loop.py"
+    },
+    {
+      "time": "2026-11-23T15:15:34-06:00",
+      "kind": "status",
+      "text": "Running the check on your loop"
+    },
+    {
+      "time": "2026-11-23T15:15:37-06:00",
+      "kind": "status",
+      "text": "Check passed: waiting for your two 1a answers"
     }
   ],
-  "turns": 1
+  "turns": 11
 }

@@ -1,0 +1,118 @@
+{
+  "step": "1d",
+  "title": "Write the agent's instructions",
+  "session_id": null,
+  "conversations": [
+    "091853d2-89f0-4c92-a364-c6a13aa2ec15"
+  ],
+  "complete": true,
+  "checkpoints": [
+    {
+      "text": "Your own instructions are in instructions.md, and say: how to break a claim into pieces; when to use wikidata; when to stop; when to answer \"doesn't say\"",
+      "reached": true
+    },
+    {
+      "text": "The second run on your 12 development claims is saved",
+      "reached": true
+    },
+    {
+      "text": "Your answer is in WRITEUP.md",
+      "reached": true
+    }
+  ],
+  "answers": [
+    {
+      "question": "What changed in the agent's traces after you wrote your instructions? Give one claim as an example.",
+      "answer": "In Sledge is a journalist claim, the agent made more search on each piece of items in the claim.",
+      "written_by": "the student"
+    }
+  ],
+  "record": [
+    {
+      "kind": "asked",
+      "text": "save, check",
+      "time": "2026-11-23T18:59:25-06:00"
+    },
+    {
+      "kind": "ran",
+      "text": "Looked at a git diff",
+      "status": "ok",
+      "file": null,
+      "reached": [
+        "Your own instructions are in instructions.md, and say: how to break a claim into pieces; when to use wikidata; when to stop; when to answer \"doesn't say\""
+      ],
+      "time": "2026-11-23T18:59:27-06:00"
+    },
+    {
+      "kind": "asked",
+      "text": "done, check again",
+      "time": "2026-11-23T19:00:13-06:00"
+    },
+    {
+      "kind": "ran",
+      "text": "Looked at a git diff",
+      "status": "ok",
+      "file": null,
+      "time": "2026-11-23T19:00:14-06:00"
+    },
+    {
+      "kind": "asked",
+      "text": "run it",
+      "time": "2026-11-23T19:00:24-06:00"
+    },
+    {
+      "kind": "ran",
+      "text": "Ran evaluate.py data/dev.jsonl --methods agent",
+      "status": "ok",
+      "file": null,
+      "reached": [
+        "The second run on your 12 development claims is saved"
+      ],
+      "time": "2026-11-23T19:00:26-06:00"
+    },
+    {
+      "kind": "asked",
+      "text": "done, check",
+      "reached": [
+        "Your answer is in WRITEUP.md"
+      ],
+      "time": "2026-11-23T19:21:34-06:00"
+    },
+    {
+      "kind": "ran",
+      "text": "Show the 1d section of WRITEUP.md",
+      "status": "ok",
+      "file": null,
+      "time": "2026-11-23T19:21:35-06:00"
+    }
+  ],
+  "told_the_page": [
+    {
+      "time": "2026-11-23T18:37:02-06:00",
+      "kind": "status",
+      "text": "Waiting for your instructions in instructions.md"
+    },
+    {
+      "time": "2026-11-23T18:59:29-06:00",
+      "kind": "checkpoint",
+      "n": 1,
+      "text": "Your own instructions are in instructions.md, and say: how to break a claim into pieces; when to use wikidata; when to stop; when to answer \"doesn't say\""
+    },
+    {
+      "time": "2026-11-23T18:59:29-06:00",
+      "kind": "status",
+      "text": "Instructions saved: waiting for the second run"
+    },
+    {
+      "time": "2026-11-23T19:00:26-06:00",
+      "kind": "status",
+      "text": "Running the agent on your 12 claims with your instructions"
+    },
+    {
+      "time": "2026-11-23T19:01:13-06:00",
+      "kind": "status",
+      "text": "Run saved: waiting for your 1d answer in WRITEUP.md"
+    }
+  ],
+  "turns": 5
+}
