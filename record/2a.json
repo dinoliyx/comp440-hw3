@@ -1,0 +1,109 @@
+{
+  "step": "2a",
+  "title": "Compare accuracy",
+  "session_id": null,
+  "conversations": [
+    "ac4d7f8c-7370-4d19-bee9-8c1242634f5c"
+  ],
+  "complete": true,
+  "checkpoints": [
+    {
+      "text": "The full run is finished",
+      "reached": true
+    },
+    {
+      "text": "The report and your answers are in WRITEUP.md",
+      "reached": true
+    }
+  ],
+  "answers": [
+    {
+      "question": "Ask Claude to paste the report of your full run, from `runs/part2/report.txt`, into the empty block below.",
+      "answer": "Share of claims where the verdict matched the label:\n\n                          no-tools  one-search       agent\nHoVer, 2 articles         18/34       17/34       20/34   \nHoVer, 3 articles         22/33       17/33       25/33   \nHoVer, 4 articles         18/33       17/33       19/33   \nAll                       58/100      51/100      64/100  \n\nHoVer, supported          14/50        1/50       24/50   \nHoVer, not supported      44/50       50/50       40/50   \n\nAverage per claim:\n\n                         lookups   seconds\nno-tools                     0.0       3.3\none-search                   2.0       4.4\nagent                        5.8      26.6\n\n3 runs gave no verdict (for example a refusal, or out of lookups). They count as wrong. The results viewer lists them on this run's page, under \"Claims with no verdict, or that stopped with an error\".",
+      "written_by": "Claude, in 2a's session"
+    },
+    {
+      "question": "How do the results compare with your predictions? Where were you furthest off? Use the numbers from your run, by number of articles.",
+      "answer": "My prediction are generally off. My furthest off is the prediction for no tools, the accuracy rate is much higher than my prediction by about 20%.",
+      "written_by": "the student"
+    },
+    {
+      "question": "Does the gap between the agent and the one-search baseline grow with the number of articles? What in the claims or the traces explains what you see?",
+      "answer": "it gap does grow for 3 articles but decline for the 4 articles. For one of the claims about moonwalking, the agent looked up more wikipage than the one-search, but the one-search retrieved the correct relevent information whereas the agent did more search that're not relevant and made the wrong judgement.",
+      "written_by": "the student"
+    },
+    {
+      "question": "The no-tools baseline read nothing. How did it do, and what does that tell you about these claims?",
+      "answer": "The no-tools basline did much better than I predicted, I think that tells me that the base knowledge the model has from training is also rich and complex enough to check a lot of the claims.",
+      "written_by": "the student"
+    }
+  ],
+  "record": [
+    {
+      "kind": "mark",
+      "reached": [
+        "The full run is finished"
+      ],
+      "time": "2026-11-23T21:47:39-06:00"
+    },
+    {
+      "kind": "ran",
+      "text": "Listed files",
+      "status": "ok",
+      "file": null,
+      "time": "2026-11-23T21:48:14-06:00"
+    },
+    {
+      "kind": "asked",
+      "text": "paste the report into WRITEUP.md",
+      "time": "2026-11-23T21:49:23-06:00"
+    },
+    {
+      "kind": "ran",
+      "text": "Find the 2a heading in WRITEUP.md",
+      "status": "ok",
+      "file": null,
+      "time": "2026-11-23T21:49:25-06:00"
+    },
+    {
+      "kind": "ran",
+      "text": "Edited WRITEUP.md",
+      "status": "ok",
+      "file": null,
+      "time": "2026-11-23T21:49:32-06:00"
+    },
+    {
+      "kind": "asked",
+      "text": "save, check",
+      "time": "2026-11-23T23:06:33-06:00"
+    },
+    {
+      "kind": "ran",
+      "text": "Find the 1e heading in WRITEUP.md",
+      "status": "ok",
+      "file": null,
+      "reached": [
+        "The report and your answers are in WRITEUP.md"
+      ],
+      "time": "2026-11-23T23:06:39-06:00"
+    },
+    {
+      "kind": "asked",
+      "text": "I cahnged, check again",
+      "time": "2026-11-23T23:07:17-06:00"
+    }
+  ],
+  "told_the_page": [
+    {
+      "time": "2026-11-23T21:48:18-06:00",
+      "kind": "status",
+      "text": "Full run finished; waiting to paste the report"
+    },
+    {
+      "time": "2026-11-23T21:49:33-06:00",
+      "kind": "status",
+      "text": "Report pasted; waiting for your answers in WRITEUP.md"
+    }
+  ],
+  "turns": 4
+}

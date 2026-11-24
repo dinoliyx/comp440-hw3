@@ -1,0 +1,50 @@
+{
+  "step": "2b",
+  "title": "Check the evidence yourself",
+  "session_id": null,
+  "conversations": [
+    "ac4d7f8c-7370-4d19-bee9-8c1242634f5c"
+  ],
+  "complete": true,
+  "checkpoints": [
+    {
+      "text": "Your table and answers are in WRITEUP.md",
+      "reached": true
+    }
+  ],
+  "answers": [
+    {
+      "question": "Fill in one row for each of the first five claims in your full run, in the order of the claims file, where the agent's verdict is *supported* or *refuted*.",
+      "answer": "1 | Gregg Rolie and Rob Tyner | refuted | not match | no | the quoted evidence only check the fact for the dirst singer but not the second one\n2 | Patrick Mercer | refuted | not match | no | the agent found the correcy resource but make the wrong judgement\n3 | This man directed the film Eve's Leaves | doesn't say | not match | no | The agent didn't read the wikipage for the second director and there are a list of films and musical but the agent didn't count\n4 | Queen Medb of Connacht | supported | match | yes | It does support the claim because it first confirmed the queen's invasion and also comfirm the language spoken in the area\n5 | John McTiernan | refuted | match | yes | The agent found information about the movie and classify all the names in the claim with the cast, and it found the onnly person in the claim that's not starred in the movie with his occupation and experience",
+      "written_by": "the student"
+    },
+    {
+      "question": "Of the five, how many matched the dataset's label, and for how many of those does the quoted evidence support the verdict?",
+      "answer": "2 claims matched the dataset's label and 2 of them does the quoted evidence support the verdict.",
+      "written_by": "the student"
+    },
+    {
+      "question": "Is accuracy alone a good measure of this agent? Why or why not?",
+      "answer": "Accuracy alone is not a good measure of this agent because it can make right judgement base on wrong evidence.",
+      "written_by": "the student"
+    }
+  ],
+  "record": [
+    {
+      "kind": "asked",
+      "text": "show me claim 1's text, verdict and quotes",
+      "reached": [
+        "Your table and answers are in WRITEUP.md"
+      ],
+      "time": "2026-11-23T23:08:09-06:00"
+    }
+  ],
+  "told_the_page": [
+    {
+      "time": "2026-11-23T23:07:48-06:00",
+      "kind": "status",
+      "text": "Started step 2b; waiting while you read the five claims"
+    }
+  ],
+  "turns": 2
+}

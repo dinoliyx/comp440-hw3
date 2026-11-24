@@ -134,19 +134,38 @@ How many lookups will the agent make per claim, on average? Why?
 Ask Claude to paste the report of your full run, from `runs/part2/report.txt`, into the empty block below.
 
 ```
+Share of claims where the verdict matched the label:
+
+                          no-tools  one-search       agent
+HoVer, 2 articles         18/34       17/34       20/34   
+HoVer, 3 articles         22/33       17/33       25/33   
+HoVer, 4 articles         18/33       17/33       19/33   
+All                       58/100      51/100      64/100  
+
+HoVer, supported          14/50        1/50       24/50   
+HoVer, not supported      44/50       50/50       40/50   
+
+Average per claim:
+
+                         lookups   seconds
+no-tools                     0.0       3.3
+one-search                   2.0       4.4
+agent                        5.8      26.6
+
+3 runs gave no verdict (for example a refusal, or out of lookups). They count as wrong. The results viewer lists them on this run's page, under "Claims with no verdict, or that stopped with an error".
 ```
 
 How do the results compare with your predictions? Where were you furthest off? Use the numbers from your run, by number of articles.
 
->
+>My prediction are generally off. My furthest off is the prediction for no tools, the accuracy rate is much higher than my prediction by about 20%. 
 
 Does the gap between the agent and the one-search baseline grow with the number of articles? What in the claims or the traces explains what you see?
 
->
+> it gap does grow for 3 articles but decline for the 4 articles. For one of the claims about moonwalking, the agent looked up more wikipage than the one-search, but the one-search retrieved the correct relevent information whereas the agent did more search that're not relevant and made the wrong judgement. 
 
 The no-tools baseline read nothing. How did it do, and what does that tell you about these claims?
 
->
+>The no-tools basline did much better than I predicted, I think that tells me that the base knowledge the model has from training is also rich and complex enough to check a lot of the claims. 
 
 ## 2b. Check the evidence yourself
 
@@ -154,19 +173,19 @@ Fill in one row for each of the first five claims in your full run, in the order
 
 | # | Claim (first few words) | Agent's verdict | Matched the dataset's label? | Does the quoted evidence support that verdict? | Why or why not |
 |---|---|---|---|---|---|
-| 1 | | | | | |
-| 2 | | | | | |
-| 3 | | | | | |
-| 4 | | | | | |
-| 5 | | | | | |
+| 1 | Gregg Rolie and Rob Tyner | refuted | not match  | no | the quoted evidence only check the fact for the dirst singer but not the second one |
+| 2 | Patrick Mercer | refuted | not match | no | the agent found the correcy resource but make the wrong judgement |
+| 3 | This man directed the film Eve's Leaves | doesn't say | not match | no | The agent didn't read the wikipage for the second director and there are a list of films and musical but the agent didn't count |
+| 4 | Queen Medb of Connacht | supported | match | yes | It does support the claim because it first confirmed the queen's invasion and also comfirm the language spoken in the area |
+| 5 | John McTiernan | refuted | match | yes | The agent found information about the movie and classify all the names in the claim with the cast, and it found the onnly person in the claim that's not starred in the movie with his occupation and experience |
 
 Of the five, how many matched the dataset's label, and for how many of those does the quoted evidence support the verdict?
 
->
+>  2 claims matched the dataset's label and 2 of them does the quoted evidence support the verdict. 
 
 Is accuracy alone a good measure of this agent? Why or why not?
 
->
+> Accuracy alone is not a good measure of this agent because it can make right judgement base on wrong evidence. 
 
 # Part 3 (extra credit): Why the agent fails, and one change
 

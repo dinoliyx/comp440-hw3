@@ -1792,6 +1792,330 @@ This step was done in the conversation under 0a, session `091853d2`, from the me
 
 This step was done in the conversation under 0a, session `091853d2`, from the message “Start step 1e.”
 
+# 2a. Compare accuracy
+
+<!-- transcript-session: ac4d7f8c-7370-4d19-bee9-8c1242634f5c | 2026-11-24T03:48:11.835Z -->
+## Session `ac4d7f8c` — 2026-11-24 03:48:11
+
+*6 user turns. Tool output shortened; reasoning omitted.*
+
+**User:**
+Start step 2a.
+
+**Claude:**
+- 🔧 `Bash` — ls runs/part2
+
+  ```
+  agent.jsonl
+  no-tools.jsonl
+  one-search.jsonl
+  report.txt
+  run.json
+  ```
+
+- 🔧 `Skill` — homework-page:page
+
+  ```
+  Launching skill: homework-page:page
+  ```
+
+- 🔧 `Bash` — python3 .workbench/page.py 2a status "Full run finished; waiting to paste the report"
+
+  ```
+  The page now says: Full run finished; waiting to paste the report
+  ```
+
+In step 2a you find out how often each of the three versions matched the dataset's label on your 100 evaluation claims. Then you compare those numbers with your predictions from 1e. Your full run has finished: `runs/part2/report.txt` is there, so the first task is done.
+
+Next, open **Results** at the top of the homework page, then "runs/part2", and read the "Accuracy" table. When you're ready, ask me to paste the report into the empty block under 2a in `WRITEUP.md`.
+
+**User:**
+paste the report into WRITEUP.md
+
+**Claude:**
+- 🔧 `Read` — /Users/dinoli/Desktop/COMP440/Homework/comp440-hw3/runs/part2/report.txt
+
+  ```
+  1	Share of claims where the verdict matched the label:
+  2	
+  3	                          no-tools  one-search       agent
+  4	HoVer, 2 articles         18/34       17/34       20/34   
+  5	HoVer, 3 articles         22/33       17/33       25/33   
+  6	HoVer, 4 articles         18/33       17/33       19/33   
+  7	All                       58/100      51/100      64/100  
+  8	
+  9	HoVer, supported          14/50        1/50       24/50   
+  10	HoVer, not supported      44/50       50/50       40/50   
+  11	
+  12	Average per claim:
+  ... (8 more lines)
+  ```
+
+- 🔧 `Bash` — grep -n "2a\. Compare accuracy" WRITEUP.md
+
+  ```
+  132:## 2a. Compare accuracy
+  ```
+
+- 🔧 `Read` — /Users/dinoli/Desktop/COMP440/Homework/comp440-hw3/WRITEUP.md
+
+  ````
+  132	## 2a. Compare accuracy
+  133	
+  134	Ask Claude to paste the report of your full run, from `runs/part2/report.txt`, into the empty block below.
+  135	
+  136	```
+  137	```
+  138	
+  139	How do the results compare with your predictions? Where were you furthest off? Use the numbers from your run, by number of articles.
+  140	
+  141	>
+  142	
+  143	Does the gap between the agent and the one-search baseline grow with the number of articles? What in the claims or the traces explains what you see?
+  ... (13 more lines)
+  ````
+
+- 🔧 `Edit` — /Users/dinoli/Desktop/COMP440/Homework/comp440-hw3/WRITEUP.md
+
+  ```
+  The file /Users/dinoli/Desktop/COMP440/Homework/comp440-hw3/WRITEUP.md has been updated successfully.
+  ```
+
+- 🔧 `Bash` — python3 .workbench/page.py 2a status "Report pasted; waiting for your answers in WRITEUP.md"
+
+  ```
+  The page now says: Report pasted; waiting for your answers in WRITEUP.md
+  ```
+
+Here is `runs/part2/report.txt`:
+
+```
+Share of claims where the verdict matched the label:
+
+                          no-tools  one-search       agent
+HoVer, 2 articles         18/34       17/34       20/34   
+HoVer, 3 articles         22/33       17/33       25/33   
+HoVer, 4 articles         18/33       17/33       19/33   
+All                       58/100      51/100      64/100  
+
+HoVer, supported          14/50        1/50       24/50   
+HoVer, not supported      44/50       50/50       40/50   
+
+Average per claim:
+
+                         lookups   seconds
+no-tools                     0.0       3.3
+one-search                   2.0       4.4
+agent                        5.8      26.6
+
+3 runs gave no verdict (for example a refusal, or out of lookups). They count as wrong. The results viewer lists them on this run's page, under "Claims with no verdict, or that stopped with an error".
+```
+
+I pasted it word for word into the empty block under "2a. Compare accuracy" in `WRITEUP.md`.
+
+Next, open **Results** at the top of the homework page, then "runs/part2", and read "Accuracy". It shows these same counts as percentages. Then type your answers to the three 2a questions in `WRITEUP.md`, in your editor. You don't need to reply here, but you can ask me how to read any row.
+
+**User:**
+save, check
+
+**Claude:**
+- 🔧 `Read` — /Users/dinoli/Desktop/COMP440/Homework/comp440-hw3/WRITEUP.md
+
+  ````
+  132	## 2a. Compare accuracy
+  133	
+  134	Ask Claude to paste the report of your full run, from `runs/part2/report.txt`, into the empty block below.
+  135	
+  136	```
+  137	Share of claims where the verdict matched the label:
+  138	
+  139	                          no-tools  one-search       agent
+  140	HoVer, 2 articles         18/34       17/34       20/34   
+  141	HoVer, 3 articles         22/33       17/33       25/33   
+  142	HoVer, 4 articles         18/33       17/33       19/33   
+  143	All                       58/100      51/100      64/100  
+  ... (28 more lines)
+  ````
+
+- 🔧 `Bash` — grep -n "## 1e" WRITEUP.md
+
+  ```
+  116:## 1e. Start the full run, and predict
+  ```
+
+- 🔧 `Read` — /Users/dinoli/Desktop/COMP440/Homework/comp440-hw3/WRITEUP.md
+
+  ```
+  116	## 1e. Start the full run, and predict
+  117	
+  118	Predict the share of claims each version will get right (its verdict matches the dataset's label), as a percentage. A guess is fine; the reasons are what I grade.
+  119	
+  120	| Version | 2 articles | 3 articles | 4 articles | Why you think so |
+  121	|---|---|---|---|---|
+  122	| No tools | 0.3 | 0.3 | 0.3 | I think with no tools it would be hard for the agent to check the claim with base knowledge|
+  123	| One search | 0.6 | 0.5 | 0.4 | I think the accuracy rate should increase with one search but it's still hard for the agent to deal with claim with many subjects|
+  124	| Agent | 0.8 | 0.8 | 0.85 | I think the agent with full toolkit will perform the best, and from the previous examples it seems like the agent deal with 4 articles better than the 2 and 3 ones. |
+  125	
+  126	How many lookups will the agent make per claim, on average? Why?
+  127	
+  ... (4 more lines)
+  ```
+
+I read the 2a section of `WRITEUP.md`. The report is in its block, and all three answer lines have your text. The page ticks the last task by itself when it sees your answers.
+
+On "save": your editor saves the file. I can't commit. The page commits "Part 2 done" for you once every step of Part 2 is complete, so you don't need to do anything.
+
+One number to check: your first answer says no-tools was off "by 30%". Here are no-tools' results from the report as percentages:
+
+- 2 articles: 18/34 = 53%
+- 3 articles: 22/33 = 67%
+- 4 articles: 18/33 = 55%
+- All: 58/100 = 58%
+
+You predicted 30% for each in 1e. So the difference is 28 points overall, and 23, 37 and 25 points by number of articles. Whether to change the answer is up to you.
+
+The next step is 2b, "Check the evidence yourself". Start it from the homework page: paste its prompt into this chat, or use its command for a new session.
+
+**User:**
+I cahnged, check again
+
+**Claude:**
+- 🔧 `Read` — /Users/dinoli/Desktop/COMP440/Homework/comp440-hw3/WRITEUP.md
+
+  ````
+  156	```
+  157	
+  158	How do the results compare with your predictions? Where were you furthest off? Use the numbers from your run, by number of articles.
+  159	
+  160	>My prediction are generally off. My furthest off is the prediction for no tools, the accuracy rate is much higher than my prediction by about 20%. 
+  161	
+  162	Does the gap between the agent and the one-search baseline grow with the number of articles? What in the claims or the traces explains what you see?
+  163	
+  164	> it gap does grow for 3 articles but decline for the 4 articles. For one of the claims about moonwalking, the agent looked up more wikipage than the one-search, but the one-search retrieved th...
+  165	
+  166	The no-tools baseline read nothing. How did it do, and what does that tell you about these claims?
+  167	
+  ... (3 more lines)
+  ````
+
+I read it again. Your first answer now says no-tools was higher than your prediction "by about 20%". That number doesn't match the report either.
+
+Here is no-tools in the report's first table, against the 30% you predicted for each number of articles in 1e:
+
+- 2 articles: 18/34 = 53%, which is 23 points above 30%
+- 3 articles: 22/33 = 67%, which is 37 points above
+- 4 articles: 18/33 = 55%, which is 25 points above
+- All: 58/100 = 58%, which is 28 points above
+
+The other two answers haven't changed, and all three answer lines have your text. Any further edits go in `WRITEUP.md` in your editor. Ask me to check again whenever you like. After that, the next step is 2b, which you start from the homework page.
+
+**User:**
+Start step 2b. Read .workbench/2b.md and follow it from now on, in place of your instructions for any other step.
+
+**Claude:**
+- 🔧 `Read` — /Users/dinoli/Desktop/COMP440/Homework/comp440-hw3/.workbench/2b.md
+
+  ```
+  1	# You are this student's tutor for HW3
+  2	
+  3	The student is taking COMP 440, Collective Intelligence, at Macalester College. They are a
+  4	third-year computer science or data science major. In HW3 they study a small AI agent that checks
+  5	claims against Wikipedia: a loop in which an LLM, Claude Haiku, looks things up and decides whether
+  6	a claim is true. The claims they check come with the homework and are the same for every student.
+  7	
+  8	These are the homework's learning goals, as the student reads them. In this homework you will:
+  9	
+  10	1. Understand what makes a program an *agent*. You will study a language model that picks the
+  11	   next Wikipedia search query, reads the page that comes back, and decides when to stop.
+  12	2. Gain hands-on experience with the loop around the model by writing it yourself: its tools, its
+  ... (390 more lines)
+  ```
+
+- 🔧 `Bash` — python3 .workbench/page.py 2b status "Started step 2b; waiting while you read the five claims"
+
+  ```
+  The page now says: Started step 2b; waiting while you read the five claims
+  ```
+
+I'm now on step 2b.
+
+In this step you check whether the agent's quoted evidence really supports its verdicts. You do this for five claims from your full run.
+
+The first task is done in the results viewer:
+
+1. Open **Results** at the top of the homework page, then "runs/part2".
+2. Click "Clear the filters".
+3. Set "Verdict" in "The agent" box to "supported or refuted", and leave "Order" at "Order of the claims file".
+4. Rows 1 to 5 are your five claims. Fill in their rows in the table under 2b in `WRITEUP.md`, in your editor.
+
+If you want, ask me to show a claim's text, verdict and quotes. You can also ask me to show a page the way the agent read it.
+
+**User:**
+show me claim 1's text, verdict and quotes
+
+**Claude:**
+- 🔧 `Read` — /Users/dinoli/Desktop/COMP440/Homework/comp440-hw3/runs/part2/agent.jsonl
+
+  ```
+  1	{"claim": "Gregg Rolie and Rob Tyner, are not a keyboardist.", "verdict": "refuted", "evidence": ["Rolie is an American keyboardist, singer and songwriter."], "explanation": "The Gregg Rolie page...
+  ```
+
+- 🔧 `Read` — /Users/dinoli/Desktop/COMP440/Homework/comp440-hw3/data/eval.jsonl
+
+  ```
+  1	{"id": "hover-961688da-e63c-4eee-9bc8-a1ebbea01124", "claim": "Gregg Rolie and Rob Tyner, are not a keyboardist.", "source": "hover", "label": "SUPPORTED", "hops": 2, "articles": ["Gregg Rolie", ...
+  ```
+
+This is row 1: it's the first claim in `data/eval.jsonl`, and the agent's verdict on it is *refuted*. Here it is from `runs/part2/agent.jsonl`:
+
+**Claim (word for word):** "Gregg Rolie and Rob Tyner, are not a keyboardist."
+
+**Agent's verdict:** *refuted*
+**Dataset's label:** *supported*, so the verdict did not match the dataset's label.
+**Number of articles:** 2
+
+**Quoted evidence (one quote):**
+> "Rolie is an American keyboardist, singer and songwriter."
+
+**Agent's explanation:**
+> "The Gregg Rolie page describes him as a keyboardist, so the claim that he is not one is contradicted. Rob Tyner is described as the lead singer of MC5, and the claim fails on the Rolie piece alone."
+
+**Trace (2 lookups, then an answer):**
+```
+1. read "Gregg Rolie"
+   Gregg Alan Rolie (born June 17, 1947) is an American keyboardist, singer and songwriter.
+   Rolie was a founding member and original lead vocalist of both Santana and Journey. He also
+   helmed rock group the Storm, performed in Ringo Starr & His All-Starr Band until 2021, and
+   since 2001 with his Gregg Rolie Band. Rolie is a two-time inductee of the Rock and Roll Hall
+   of Fame, having been inducted both as a member of Santana in 1998 and as a member of Journey
+   in 2017.
+   Sections: Career, Solo discography, with Santana, with Journey, with The Storm, with Abraxas
+   Pool, Collaboration, Bibliography, External links
+
+2. read "Rob Tyner"
+   Robert W. Derminer (December 12, 1944 – September 17, 1991), known as Rob Tyner, was an
+   American musician best known as the lead singer for the Detroit proto-punk band MC5. His
+   adopted surname was in tribute to the jazz pianist McCoy Tyner. It was Tyner who issued the
+   rallying cry of "kick out the jams, motherfuckers" at the MC5's live concerts.  Tyner had
+   originally auditioned as the bass player, but the band felt his talents would be best used
+   as the lead vocalist.
+   He is considered by some to be one of the greatest punk rock vocalists of all time.
+   Sections: Early years, MC5, Other works, Death, MC5, Robin Tyner & The Hot Rods, Stev
+   Manteiv, Solo, The Rob Tyner Band
+
+3. answer: refuted (accepted)
+```
+
+The quote's wording, "Rolie is an American…", doesn't appear exactly like that in the trace. Entry 1 has "Gregg Alan Rolie (born June 17, 1947) is an American keyboardist, singer and songwriter." The results viewer shows this check under each quote.
+
+Whether the quoted evidence supports the verdict is your call. It goes in row 1 of the table under 2b in `WRITEUP.md`.
+
+<!-- end-session: ac4d7f8c-7370-4d19-bee9-8c1242634f5c -->
+
+# 2b. Check the evidence yourself
+
+This step was done in the conversation under 2a, session `ac4d7f8c`, from the message “Start step 2b.”
+
 # Other Claude sessions in this folder
 
 <!-- transcript-session: b04516b0-90d7-4340-a972-9acac9c91ab8 | 2026-11-23T16:18:33.308Z -->
@@ -1922,7 +2246,7 @@ Once the page is open, paste the prompt for the step you're on into a new Claude
 <!-- transcript-session: 3b7729f3-d314-41c5-9667-d0bf5667cfeb | 2026-11-24T03:38:35.681Z -->
 ## Session `3b7729f3` — 2026-11-24 03:38:35
 
-*2 user turns. Tool output shortened; reasoning omitted.*
+*5 user turns. Tool output shortened; reasoning omitted.*
 
 **User:**
 does the agent have base knowledge with no tools?
@@ -1938,5 +2262,100 @@ You don't need to reply here unless you want me to do that or explain anything e
 
 **User:**
 done check
+
+**Claude:**
+- 🔧 `Read` — /Users/dinoli/Desktop/COMP440/Homework/comp440-hw3/WRITEUP.md
+
+  ```
+  1	# COMP 440 HW3 write-up
+  2	
+  3	Name: Dino Li
+  4	
+  5	Type each answer after the `>` under its question. An answer can run over several lines, but a blank line
+  6	ends it: to start a new paragraph, put a line with just `>` between the two. In a table, fill every cell
+  7	of every numbered row. Claude may paste a program's output where a question asks for it, but never an
+  8	answer. The homework page ticks a step when every answer in its section is filled in.
+  9	
+  10	## Learning goals
+  11	
+  12	In this homework you will:
+  ... (211 more lines)
+  ```
+
+I read WRITEUP.md, but I'm guessing what "done check" meant. I took it to mean you want me to check how far you've got.
+
+- **Filled in:** every answer from 0a through 1e. That includes the predictions table and the average-lookups answer.
+- **Empty:** everything from 2a on, which is the report block, the three written answers, the 2b table and the Part 3 sections.
+- **One thing to check in 0b:** your answer ends with a line starting "Start step 0c. Read .workbench/0c.md…". It looks like pasted page text that landed in the answer.
+
+I haven't looked at `runs/part2/` yet, so I don't know whether the full run has finished.
+
+If you meant a different check, such as `check_loop.py`, tell me which one.
+
+The next task is 2a. When you're ready, ask me to paste the report from `runs/part2/report.txt` into the empty block. After that, type the three comparison answers in WRITEUP.md in your editor.
+
+**User:**
+Start step 2a. Read .workbench/2a.md and follow it from now on, in place of your instructions for any other step.
+
+**Claude:**
+- 🔧 `Read` — /Users/dinoli/Desktop/COMP440/Homework/comp440-hw3/.workbench/2a.md
+
+  ```
+  1	# You are this student's tutor for HW3
+  2	
+  3	The student is taking COMP 440, Collective Intelligence, at Macalester College. They are a
+  4	third-year computer science or data science major. In HW3 they study a small AI agent that checks
+  5	claims against Wikipedia: a loop in which an LLM, Claude Haiku, looks things up and decides whether
+  6	a claim is true. The claims they check come with the homework and are the same for every student.
+  7	
+  8	These are the homework's learning goals, as the student reads them. In this homework you will:
+  9	
+  10	1. Understand what makes a program an *agent*. You will study a language model that picks the
+  11	   next Wikipedia search query, reads the page that comes back, and decides when to stop.
+  12	2. Gain hands-on experience with the loop around the model by writing it yourself: its tools, its
+  ... (390 more lines)
+  ```
+
+- 🔧 `Bash` — ls runs/part2
+
+  ```
+  agent.jsonl
+  no-tools.jsonl
+  one-search.jsonl
+  run.json
+  ```
+
+I'm now on step 2a.
+
+This step is where you find out how often each of the three versions matched the dataset's label on your 100 evaluation claims. You then compare those numbers with your predictions from 1e.
+
+`runs/part2` has no `report.txt`, so the full run has not finished. It either stopped early or is still going. What does the run's terminal tab show? If it is still printing progress with no prompt after the last line, wait there for its two tables. If the tab is closed or the run has stopped, tell me and I'll give you the command to start it again. It keeps every claim already finished.
+
+**User:**
+what should I do now
+
+**Claude:**
+Check the terminal tab where you started the full run, because `runs/part2` still has no `report.txt`.
+
+- **It's still printing progress** (a line like "agent: 40 of 100 done" with no prompt after it): leave it running and wait there for its two tables.
+- **The tab is closed, or the run stopped:** paste this in a terminal tab of your own, in this folder. It keeps every claim already finished and checks only the rest. It takes up to about 10 minutes and about 28 cents of your key.
+
+      uv run python evaluate.py data/eval.jsonl --out runs/part2
+
+Don't start it while the first copy is still going, because both would write into the same folder. Tell me which case you're in if you're not sure. Once `report.txt` exists, ask me to paste it into WRITEUP.md.
+
+**User:**
+I cant find it
+
+**Claude:**
+If you can't find the tab, the run most likely stopped when its terminal closed. Open a new terminal in this folder, the one with `steps.toml`, and paste:
+
+    uv run python evaluate.py data/eval.jsonl --out runs/part2
+
+It keeps every claim already finished and checks only the rest. It takes up to about 10 minutes and about 28 cents of your key. Leave that terminal open until it prints its two tables.
+
+The one risk is that the first run is still going in a terminal window you can't see. If you've closed every terminal and restarted your computer or the homework page since you started it, it isn't. If you're not sure, tell me and I'll check whether a run is still going before you start another.
+
+When `report.txt` appears, ask me to paste it into WRITEUP.md.
 
 <!-- end-session: 3b7729f3-d314-41c5-9667-d0bf5667cfeb -->
