@@ -28,7 +28,7 @@ There is nothing to write for this step except your name, after `Name:` at the t
 
 What verdict did the model give (*supported*, *refuted* or *doesn't say*), and what reason did it give? Quote the lines of the output that show them.
 
-> Doesn't say, the reason given is "I can't confirm from memory who composed "Persian Surgery Dervishes" or find a Wikipedia entry giving that composer's birth date, so I can't verify the claimed June 24, 1935 birth date."  
+> Doesn't say, the reason given is "I can't confirm from memory who composed "Persian Surgery Dervishes" or find a Wikipedia entry giving that composer's birth date, so I can't verify the claimed June 24, 1935 birth date."      
 
 ## 0c. Give it one search
 
